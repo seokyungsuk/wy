@@ -73,7 +73,34 @@ function App() {
 
 createRoot(document.getElementById("root")).render(<App />);
 </script>
+<script type="module">
+import React from "react";
+import { createRoot } from "react-dom/client";
+
+function App() {
+  return (
+    <div class="min-h-screen bg-white">
+      <section class="h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-700 text-white">
+        <div class="text-center animate-fade-up">
+          <h1 class="text-5xl font-bold font-montserrat tracking-tight">
+            Wycro Systems
+          </h1>
+          <p class="mt-4 text-xl text-slate-300">
+            배터리 칠러 · 오일 칠러 자동화 전문
+          </p>
+          <p class="mt-6 text-slate-400">
+            EV Thermal Management Automation
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<App />);
+</script>
 
 
 </body>
 </html>
+
