@@ -1,721 +1,435 @@
 <!DOCTYPE html>
-<html lang="ko" class="bg-slate-950 scroll-smooth">
+<html lang="ko" class="scroll-smooth">
 <head>
-<meta name="naver-site-verification" content="da26d1750c7750f97c281566880c80348afa20fc" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wycro Systems | 주식회사 와이크로시스템즈</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0ea5e9', 
-                        dark: '#020617',    
-                        accent: '#38bdf8'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { 
-            font-family: 'Inter', 'Noto Sans KR', sans-serif; 
-            background-color: #020617; 
-            color: #f8fafc; 
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #38bdf8;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wycro Systems | 와이크로시스템즈</title>
 
-        .glass { background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(16px); }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.15) 0%, rgba(2, 6, 23, 0) 60%);
-        }
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
-        .site-wrapper {
-            max-width: 1600px;
-            margin: 0 auto;
-            background-color: #020617;
-            position: relative;
-        }
+  <style>
+    :root { --brand:#03004c; }
+    body { font-family: "Noto Sans KR", sans-serif; }
+  </style>
 
-        h1, h2, h3 { letter-spacing: -0.04em; word-break: keep-all; }
-        p { line-height: 1.8; }
-
-        /* Mobile-friendly wrapping for long strings */
-        h1, h2, h3, p, td, th { overflow-wrap: break-word; }
-
-        .map-box { 
-            position: relative; 
-            width: 100%; 
-            height: 500px; 
-            border-radius: 2rem; 
-            overflow: hidden; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px border-slate-800;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: "var(--brand)" },
+          boxShadow: { soft: "0 10px 30px rgba(0,0,0,.08)" }
         }
-        .map-box iframe {
-            filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
-        }
-
-        .comparison-table tr:hover {
-            background-color: rgba(14, 165, 233, 0.05);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
-        }
-
-        .section-title {
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            word-break: keep-all;
-        }
-        .section-sub {
-            font-size: 12px;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #38bdf8;
-            font-weight: 800;
-            display: inline-block;
-        }
-
-
-        .img-container {
-            background-color: rgba(15, 23, 42, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="overflow-x-hidden selection:bg-blue-500/30">
 
-    <div class="site-wrapper border-x border-slate-900/50">
-        <!-- Header -->
-        <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent" id="main-header">
-            <div class="container mx-auto px-6 py-5 flex justify-between items-center max-w-[1440px]">
-                <a href="#home" class="flex items-center space-x-4 group">
-                    <div class="bg-blue-600 p-2 rounded-xl group-hover:scale-105 transition-transform duration-300">
-                        <img src="logo1.png" alt="Wycro Systems Logo" class="h-7 md:h-9 object-contain" onerror="this.parentElement.style.display='none'">
-                    </div>
-                    <span class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">WYCRO SYSTEMS</span>
-                </a>
-                
-                <nav class="hidden lg:flex space-x-10 text-[11px] font-black uppercase tracking-[0.25em] text-slate-400">
-                    <a href="#intro" class="nav-link hover:text-white transition-colors">인사말</a>
-                    <a href="#domains" class="nav-link hover:text-white transition-colors">사업분야</a>
-                    <a href="#business" class="nav-link hover:text-white transition-colors">경쟁력</a>
-                    <a href="#tech" class="nav-link hover:text-white transition-colors">자동화공정</a>
-                    <a href="#products" class="nav-link hover:text-white transition-colors">제품</a>
-                    <a href="#vision" class="nav-link hover:text-white transition-colors">비전</a>
-                    <a href="#contact" class="nav-link hover:text-white transition-colors">문의</a>
-                </nav>
+<body class="bg-white text-slate-900">
 
-                <div class="flex items-center space-x-5">
-                    <a href="#contact" class="hidden md:inline-block px-6 py-3 bg-blue-600 text-white rounded-lg text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/20 transition-all">Start Project</a>
-                    <button class="lg:hidden text-white p-2" id="mobile-menu-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                        </svg>
-                    </button>
-                </div>
+ <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <!-- 로고 이미지로 바꾸려면 아래 SVG 대신 <img src="logo.png" ...> 넣으면 됨 -->
+        <div class="w-9 h-9 rounded-xl bg-brand text-white grid place-items-center shadow-soft">
+          <span class="font-black">W</span>
+        </div>
+        <div class="leading-tight">
+          <div class="font-extrabold tracking-tight">WYCRO SYSTEMS</div>
+          <div class="text-xs text-slate-500">주식회사 와이크로시스템즈</div>
+        </div>
+      </a>
+
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-7 text-sm font-bold">
+      <a class="hover:text-brand" href="#home">HOME</a>
+      <a class="hover:text-brand" href="#about">회사소개</a>
+      <a class="hover:text-brand" href="#service">사업분야</a>
+      <a class="hover:text-brand" href="#story">STORY</a>
+      <a class="hover:text-brand" href="#parts">PRODUCT</a>
+      <a class="hover:text-brand" href="#location">오시는 길</a>
+      <a class="hover:text-brand" href="#contact">문의</a>
+    </nav>
+
+    <!-- Mobile Button -->
+    <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 hover:bg-slate-50" aria-label="메뉴">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm font-bold">
+      <a class="py-2 hover:text-brand" href="#home">HOME</a>
+      <a class="py-2 hover:text-brand" href="#about">회사소개</a>
+      <a class="py-2 hover:text-brand" href="#service">사업분야</a>
+      <a class="py-2 hover:text-brand" href="#story">STORY</a>
+      <a class="py-2 hover:text-brand" href="#parts">PRODUCT</a>
+      <a class="py-2 hover:text-brand" href="#location">오시는 길</a>
+      <a class="py-2 hover:text-brand" href="#contact">문의</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO (배경 이미지 적용) -->
+<section id="home" class="relative overflow-hidden text-white">
+  <div class="absolute inset-0">
+    <!-- ✅ 메인 배경 이미지: 같은 폴더에 automation_line.jpg 업로드 -->
+    <img src="automation_line.jpg" alt="Automation Line" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/75 to-brand/70"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-20">
+    <div class="max-w-3xl">
+      <span class="inline-block bg-white/10 px-4 py-2 rounded-full text-xs font-bold">
+        맞춤 자동화설비 제작 전문기업
+      </span>
+
+      <h1 class="mt-6 text-3xl sm:text-4xl md:text-6xl font-black leading-tight">
+        자동화설비로 공정을 바꾸다<br/>
+        생산성을 표준화합니다
+      </h1>
+
+      <p class="mt-5 text-white/85 text-base md:text-lg leading-relaxed">
+        와이크로시스템즈는 고객 맞춤 자동화설비를 설계·제작·구축하며,
+        EV 배터리 칠러·오일 칠러 열교환기 공정의 도장·적층·검사·조립을
+        하나의 라인으로 통합합니다.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#service" class="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-extrabold text-slate-950 shadow-soft hover:opacity-95">
+          주요 서비스 보기
+        </a>
+        <a href="#contact" class="inline-flex items-center justify-center rounded-2xl border border-white/30 px-5 py-3 text-sm font-extrabold text-white hover:bg-white/10">
+          견적/상담 요청
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="rounded-2xl bg-white/10 p-4">
+          <div class="text-xl font-black">도장</div>
+          <div class="text-xs text-white/70 mt-1">표면처리 자동화</div>
+        </div>
+        <div class="rounded-2xl bg-white/10 p-4">
+          <div class="text-xl font-black">적층</div>
+          <div class="text-xs text-white/70 mt-1">공정 모듈화</div>
+        </div>
+        <div class="rounded-2xl bg-white/10 p-4">
+          <div class="text-xl font-black">검사</div>
+          <div class="text-xs text-white/70 mt-1">품질/외관/치수</div>
+        </div>
+        <div class="rounded-2xl bg-white/10 p-4">
+          <div class="text-xl font-black">조립</div>
+          <div class="text-xs text-white/70 mt-1">라인 통합</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY ABOUT -->
+  <section id="about" class="py-14 md:py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <div class="text-sm font-extrabold text-brand">COMPANY</div>
+          <h2 class="mt-2 text-2xl md:text-4xl font-black tracking-tight">회사소개</h2>
+        </div>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-12 gap-6 items-start">
+        <!-- 왼쪽: 인사말 카드 -->
+        <div class="lg:col-span-8 rounded-3xl border border-slate-200 bg-white p-7 md:p-9 shadow-soft">
+          <div class="prose max-w-none prose-slate">
+            <p class="text-slate-700 leading-relaxed">
+              <span class="font-extrabold text-slate-900">안녕하십니까.</span>
+              <br/>
+              주식회사 <span class="font-extrabold text-slate-900">와이크로시스템즈(WYCRO SYSTEMS)</span> 홈페이지를 방문해 주셔서 감사합니다.
+            </p>
+
+            <div class="mt-6 space-y-4 text-slate-700 leading-relaxed">
+              <p>
+                와이크로시스템즈는 고객맞춤형 자동화 설비 설계·제작과
+                전기차(EV) 배터리 칠러와 오일 칠러에 적용되는 열교환기 핵심 부품을
+                자동화 설비로 도장, 모듈화하여 검사하는 기술기업 입니다.
+              </p>
+              <p>
+                이를 통해 고객사의 생산 효율을 높이고 인건비 부담을 획기적으로 줄일 수 있는 솔루션을 제공합니다.
+              </p>
+              <p>
+                또한, EV 열관리 산업의 발전과 함께 성장하며, 첨단 기술을 접목시켜
+                환경을 고려한 지속 가능한 자동화 솔루션을 개발하여 산업 전반의 혁신을 주도하겠습니다.
+              </p>
             </div>
-        </header>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 bg-dark z-[60] flex flex-col items-center justify-center space-y-10 text-3xl font-black hidden">
-            <button id="mobile-close-btn" class="absolute top-10 right-10 text-slate-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <a href="#intro" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">인사말</a>
-            <a href="#domains" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">사업분야</a>
-            <a href="#business" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">경쟁력</a>
-            <a href="#tech" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">자동화공정</a>
-            <a href="#products" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">제품</a>
-            <a href="#vision" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">비전</a>
-            <a href="#contact" class="mobile-link text-slate-300 hover:text-blue-500 transition-colors">문의</a>
+            <div class="mt-8 pt-6 border-t border-slate-200">
+              <div class="text-base font-black text-brand">WYCRO SYSTEMS Co., Ltd.</div>
+              <div class="text-sm font-bold text-slate-700 mt-1">주식회사 와이크로시스템즈</div>
+            </div>
+          </div>
         </div>
 
-        <main>
-            <!-- 1. Hero Section -->
-            <section id="home" class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-dark">
-                <!-- Background Layer -->
-                <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&q=80&w=2400" class="w-full h-full object-cover scale-105" alt="High-tech Automation Facility">
-                    <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/40"></div>
-                    <div class="absolute inset-0 hero-gradient"></div>
-                </div>
-                
-                <div class="container mx-auto px-6 z-10 text-left md:text-center">
-                    <div class="max-w-6xl mx-auto space-y-12 reveal active">
-                        <div class="inline-flex items-center space-x-3 px-5 py-2.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-400 text-[11px] font-black uppercase tracking-[0.3em] mb-4 backdrop-blur-md">
-                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-                            <span>Advanced Industrial Automation</span>
-                        </div>
-                        
-                        <div class="space-y-6">
-                            <h1 class="text-3xl sm:text-5xl md:text-[5.5rem] lg:text-[7rem] font-black leading-[1] tracking-tighter text-white uppercase italic" data-cms="hero_title">
-                                맞춤형 자동화 설비<br>
-                                <span class="text-glow text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600">EV 열관리 부품의 혁신</span>
-                            </h1>
-                            <div class="h-1.5 w-32 md:w-48 bg-blue-600 md:mx-auto rounded-full"></div>
-                        </div>
+        <!-- 오른쪽: 핵심 요약 -->
+        <aside class="lg:col-span-4 grid gap-4">
+          <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-soft">
+            <div class="text-sm font-extrabold text-slate-800">핵심 역량</div>
+            <ul class="mt-3 text-sm text-slate-600 leading-relaxed list-disc pl-5 space-y-2">
+              <li><span class="font-bold text-slate-800">맞춤 자동화설비</span> 설계·제작·구축</li>
+              <li>도장·적층·검사·조립 <span class="font-bold text-slate-800">라인 통합</span></li>
+              <li>생산성 향상 및 <span class="font-bold text-slate-800">인건비 절감</span> 지원</li>
+            </ul>
+          </div>
 
-                        <p class="text-base sm:text-xl md:text-2xl text-slate-300 leading-relaxed max-w-3xl md:mx-auto font-medium opacity-90" data-cms="hero_desc">
-                            자동화 기술의 리더. 도장 모듈에서 자동 검사 시스템까지,<br class="hidden md:block">
-                            <span class="text-white font-bold">주식회사 와이크로시스템즈</span>가 미래 기술의 새로운 표준을 제안합니다.
-                        </p>
-
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center md:justify-center gap-6 pt-8">
-                            <a href="#contact" class="group w-full sm:w-auto px-12 py-5 bg-blue-600 text-white rounded-xl font-black text-lg hover:bg-blue-500 hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-3">
-                                <span>프로젝트 문의하기</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
-                            <a href="#intro" class="w-full sm:w-auto px-12 py-5 glass-card text-white rounded-xl font-black text-lg hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-                                자세히 보기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block opacity-50">
-                    <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
-                        <div class="w-1 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 2. Greeting Section (인사말) -->
-            <section id="intro" class="py-32 bg-dark">
-                <div class="container mx-auto max-w-5xl px-6 reveal">
-                    <div class="grid lg:grid-cols-12 gap-16 items-start">
-                        <div class="lg:col-span-5 space-y-6">
-                            <span class="section-sub">CEO Greeting</span>
-                            <h2 class="section-title text-3xl md:text-4xl text-white leading-tight mt-4">와이크로시스템즈<br>홈페이지 방문을 환영합니다</h2>
-                            <div class="w-20 h-1 bg-blue-600"></div>
-                        </div>
-                        <div class="lg:col-span-7 space-y-8 text-lg text-slate-400 font-medium italic leading-relaxed">
-                            <p>안녕하십니까.</p>
-                            <p>주식회사 와이크로시스템즈(Wycro Systems) 홈페이지를 방문해 주셔서 감사합니다.</p>
-                            <p>와이크로시스템즈는 고객맞춤형 자동화 설비 설계·제작과 전기차(EV) 배터리 칠러와 오일 칠러에 적용되는 열교환기 핵심 부품을 자동화 설비로 도장, 모듈화하여 검사하는 기술기업 입니다.</p>
-                            <p>이를 통해 고객사의 생산 효율을 높이고 인건비 부담을 획기적으로 줄일 수 있는 솔루션을 제공합니다.</p>
-                            <p>또한, EV 열관리 산업의 발전과 함께 성장하며, 첨단 기술을 접목시켜 환경을 고려한 지속 가능한 자동화 솔루션을 개발하여 산업 전반의 혁신을 주도하겠습니다.</p>
-                            <div class="pt-6 border-t border-white/5">
-                                <p class="text-white font-bold not-italic">Wycro Systems Co., Ltd.</p>
-                                <p class="text-blue-400 font-black not-italic uppercase tracking-widest text-sm">주식회사 와이크로시스템즈</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 8. 사업 영역 (Business Domains) -->
-            <section id="domains" class="py-32 bg-dark">
-                <div class="container mx-auto max-w-6xl px-6">
-                    <div class="text-center mb-20 reveal">
-                        <span class="section-sub">Business Scope</span>
-                        <h3 class="section-title text-4xl md:text-5xl text-white mt-4">사업 영역</h3>
-                    </div>
-
-<div class="grid md:grid-cols-2 gap-8">
-                        <!-- Area 1 -->
-                        <div class="bg-slate-900/50 border border-white/5 rounded-3xl overflow-hidden reveal group hover:border-blue-500/50 transition-all duration-500">
-                            <div class="h-80 img-container p-4">
-                                <img src="automation1_line.jpg" alt="Automation Equipment Production & Sales" class="w-full h-full object-contain transition duration-700">
-                            </div>
-                            <div class="p-6 md:p-10 space-y-6">
-                                <h4 class="text-2xl font-black text-white italic uppercase tracking-tighter">자동화 설비 제작 & 판매</h4>
-                                <ul class="space-y-4 text-slate-400 font-medium">
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>열교환기 도장 설비</span>
-                                    </li>
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>플레이트 적층 설비</span>
-                                    </li>
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>조립·검사 자동화 라인</span>
-                                    </li>
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>고객 맞춤형 자동화 설비</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Area 2 -->
-                        <div class="bg-slate-900/50 border border-white/5 rounded-3xl overflow-hidden reveal group hover:border-blue-500/50 transition-all duration-500" style="transition-delay: 150ms;">
-                            <div class="h-80 img-container p-4">
-                                <img src="automation_line.jpg" alt="EV Parts Automation Process" class="w-full h-full object-contain transition duration-700">
-                            </div>
-                            <div class="p-6 md:p-10 space-y-6">
-                                <h4 class="text-2xl font-black text-white italic uppercase tracking-tighter">EV 열관리 부품의 자동화 공정</h4>
-                                <ul class="space-y-4 text-slate-400 font-medium">
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>Battery Chiller용 Heat Exchanger</span>
-                                    </li>
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>Oil Chiller용 Heat Exchanger</span>
-                                    </li>
-                                    <li class="flex items-center space-x-3">
-                                        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                                        <span>Aluminum Plate Fin Type 부품</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. Comparison Table (Wycro 경쟁력) -->
-            <section id="business" class="py-32 bg-slate-900/10">
-                <div class="container mx-auto max-w-5xl px-6 reveal">
-                    <div class="text-center mb-16">
-                        <span class="section-sub">Competitive Advantage</span>
-                        <h3 class="section-title text-4xl md:text-5xl text-white mt-4">Wycro Systems의 차별성</h3>
-                    </div>
-<div class="hidden md:block bg-slate-900 border border-white/5 rounded-3xl overflow-x-auto shadow-2xl">
-                        <table class="w-full text-left comparison-table">
-                            <thead>
-                                <tr class="bg-slate-800/50 border-b border-white/5">
-                                    <th class="p-8 text-slate-400 font-bold uppercase text-[11px] tracking-widest">구분</th>
-                                    <th class="p-8 text-slate-500 font-bold uppercase text-[11px] tracking-widest">일반 부품사</th>
-                                    <th class="p-8 text-blue-400 font-black uppercase text-[11px] tracking-widest bg-blue-500/5">Wycro Systems</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-[15px] font-medium text-slate-300">
-                                <tr class="border-b border-white/5 transition-colors">
-                                    <td class="p-8 border-r border-white/5">생산 방식</td>
-                                    <td class="p-8 text-slate-500">인력 의존</td>
-                                    <td class="p-8 text-white bg-blue-500/5 font-bold italic">완전 자동화</td>
-                                </tr>
-                                <tr class="border-b border-white/5 transition-colors">
-                                    <td class="p-8 border-r border-white/5">품질 편차</td>
-                                    <td class="p-8 text-slate-500">작업자 숙련도 의존</td>
-                                    <td class="p-8 text-white bg-blue-500/5 font-bold italic">설비로 균일화</td>
-                                </tr>
-                                <tr class="border-b border-white/5 transition-colors">
-                                    <td class="p-8 border-r border-white/5">생산성</td>
-                                    <td class="p-8 text-slate-500">제한적</td>
-                                    <td class="p-8 text-white bg-blue-500/5 font-bold italic">고속·대량 생산</td>
-                                </tr>
-                                <tr class="border-b border-white/5 transition-colors">
-                                    <td class="p-8 border-r border-white/5">비용 구조</td>
-                                    <td class="p-8 text-slate-500">인건비 비중 높음</td>
-                                    <td class="p-8 text-white bg-blue-500/5 font-bold italic">저인건비·고효율</td>
-                                </tr>
-                                <tr class="transition-colors">
-                                    <td class="p-8 border-r border-white/5">설비</td>
-                                    <td class="p-8 text-slate-500">외주 구매</td>
-                                    <td class="p-8 text-white bg-blue-500/5 font-bold italic">자체 설계·제작</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="md:hidden space-y-6 mt-6">
-                      <div class="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                        <p class="text-sm text-slate-400 mb-2">생산 방식</p>
-                        <p class="text-slate-500 text-sm">일반 부품사: 인력 의존</p>
-                        <p class="text-blue-400 font-bold">Wycro Systems: 완전 자동화</p>
-                      </div>
-
-                      <div class="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                        <p class="text-sm text-slate-400 mb-2">품질 편차</p>
-                        <p class="text-slate-500 text-sm">일반 부품사: 작업자 숙련도 의존</p>
-                        <p class="text-blue-400 font-bold">Wycro Systems: 설비로 균일화</p>
-                      </div>
-
-                      <div class="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                        <p class="text-sm text-slate-400 mb-2">생산성</p>
-                        <p class="text-slate-500 text-sm">일반 부품사: 제한적</p>
-                        <p class="text-blue-400 font-bold">Wycro Systems: 고속·대량 생산</p>
-                      </div>
-
-                      <div class="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                        <p class="text-sm text-slate-400 mb-2">비용 구조</p>
-                        <p class="text-slate-500 text-sm">일반 부품사: 인건비 비중 높음</p>
-                        <p class="text-blue-400 font-bold">Wycro Systems: 저인건비·고효율</p>
-                      </div>
-
-                      <div class="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                        <p class="text-sm text-slate-400 mb-2">설비</p>
-                        <p class="text-slate-500 text-sm">일반 부품사: 외주 구매</p>
-                        <p class="text-blue-400 font-bold">Wycro Systems: 자체 설계·제작</p>
-                      </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- 4. Automation Process (공정 상세 설명) -->
-            <section id="tech" class="py-32 bg-dark overflow-hidden">
-                <div class="container mx-auto max-w-6xl px-6">
-                    <div class="grid lg:grid-cols-2 gap-20 items-center reveal">
-                        <div class="space-y-10">
-                            <div class="space-y-4">
-                                <span class="section-sub">Advanced Factory System</span>
-                                <h3 class="section-title text-4xl md:text-5xl text-white mt-4">혁신 자동화 생산 설비</h3>
-                            </div>
-                            <div class="space-y-6 text-lg text-slate-400 font-medium">
-                                <p>와이크로시스템즈는 열교환기 부품을 <span class="text-blue-400 font-bold">도색 → 건조 → 적층 → 정렬 → 조립 → 검사</span>까지 하나의 자동화 라인에서 완성하는 전용 생산 시스템을 설계·제작합니다.</p>
-                                <p>이 설비는 사람의 수작업을 최소화하고 불량을 자동 검사로 차단하여 대량 생산과 고품질을 동시에 실현합니다.</p>
-                                <p class="bg-blue-500/5 border-l-4 border-blue-600 p-6 italic">"고객의 제품 형상과 생산량에 맞춰 최적화된 맞춤형 자동화 설비를 제공합니다."</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="space-y-4">
-                                <div class="bg-slate-900 border border-white/5 p-8 rounded-2xl group hover:border-blue-500 transition-all">
-                                    <span class="text-3xl font-black text-blue-600 block mb-2 opacity-50 group-hover:opacity-100">01</span>
-                                    <p class="text-white font-bold text-xl">도색 & 건조</p>
-                                </div>
-                                <div class="bg-slate-900 border border-white/5 p-8 rounded-2xl group hover:border-blue-500 transition-all">
-                                    <span class="text-3xl font-black text-blue-600 block mb-2 opacity-50 group-hover:opacity-100">02</span>
-                                    <p class="text-white font-bold text-xl">적층 & 정렬</p>
-                                </div>
-                            </div>
-                            <div class="space-y-4 mt-8">
-                                <div class="bg-slate-900 border border-white/5 p-8 rounded-2xl group hover:border-blue-500 transition-all">
-                                    <span class="text-3xl font-black text-blue-600 block mb-2 opacity-50 group-hover:opacity-100">03</span>
-                                    <p class="text-white font-bold text-xl">조립 & 결합</p>
-                                </div>
-                                <div class="bg-slate-900 border border-white/5 p-8 rounded-2xl group hover:border-blue-500 transition-all border-blue-600/50">
-                                    <span class="text-3xl font-black text-blue-600 block mb-2 opacity-50 group-hover:opacity-100">04</span>
-                                    <p class="text-white font-bold text-xl">자동 검사</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. Product Section -->
-            <section id="products" class="py-32 bg-slate-900/10">
-                <div class="container mx-auto max-w-6xl px-6">
-                    <div class="text-center mb-20 reveal">
-                        <span class="section-sub">Product Lineup</span>
-                        <h3 class="section-title text-4xl md:text-5xl text-white mt-4">핵심 솔루션</h3>
-                    </div>
-
-<div class="grid md:grid-cols-2 gap-12">
-                        <!-- Battery Chiller Card -->
-                        <div class="group relative reveal">
-                            <div class="relative bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-500 h-full flex flex-col">
-                                <div class="h-80 img-container p-6">
-                                    <img src="battery_chiller.jpg" alt="Battery Chiller Part" class="w-full h-full object-contain transition duration-700">
-                                </div>
-                                <div class="p-6 md:p-10 flex-1 flex flex-col space-y-4">
-                                    <h4 class="text-3xl font-black text-white group-hover:text-blue-400 transition-colors">Battery Chiller Part</h4>
-                                    <p class="text-slate-400 text-lg leading-relaxed" data-cms="prod_desc_battery">겹겹이 쌓인 알루미늄 플레이트 구조의 열교환기가 들어갑니다. 이 부품은 오일과 냉각수가 얇은 알루미늄 판 사이를 흐르며 서로의 열을 교환하는 EV 열관리의 핵심 장치입니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Oil Chiller Card -->
-                        <div class="group relative reveal" style="transition-delay: 200ms;">
-                            <div class="relative bg-slate-900 border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500 transition-all duration-500 h-full flex flex-col">
-                                <div class="h-80 img-container p-6">
-                                    <img src="oil_chiller.jpg" alt="Oil Chiller Part" class="w-full h-full object-contain transition duration-700">
-                                </div>
-                                <div class="p-6 md:p-10 flex-1 flex flex-col space-y-4">
-                                    <h4 class="text-3xl font-black text-white group-hover:text-blue-400 transition-colors">Oil Chiller Part</h4>
-                                    <p class="text-slate-400 text-lg leading-relaxed" data-cms="prod_desc_oil">차량의 엔진 오일 또는 변속기 오일 온도를 일정 범위로 유지 오일 온도가 과도하게 상승하면 윤활 성능 저하 및 부품 손상이 발생하므로, 냉각 기능이 필수 배터리 칠러와 달리 이 부품은 전기적 제어보다는 오일 순환과 열 전달이 핵심.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 6. Vision Section -->
-            <section id="vision" class="py-40 bg-blue-600 relative overflow-hidden">
-                <div class="absolute inset-0 bg-dark/20"></div>
-                <div class="container mx-auto max-w-5xl px-6 relative z-10 text-center reveal">
-                    <span class="text-white font-black uppercase text-sm tracking-[0.5em] mb-8 block opacity-80">Our Vision</span>
-                    <h2 class="text-4xl md:text-7xl font-black text-white leading-tight mb-12">
-                        “고객맞춤형 자동화 설비의<br>표준이 되다.”
-                    </h2>
-                    <div class="max-w-3xl mx-auto text-lg md:text-xl text-white/80 font-medium leading-relaxed space-y-6">
-                        <p>와이크로시스템즈는 고객의 니즈를 반영하여 최적화된 자동화 솔루션을 제공함으로써, 고객의 생산 효율성과 경쟁력을 극대화하는 것입니다.</p>
-                        <p>또한 전기차 열관리 부품 공정을 통해 인력의 한계를 뛰어넘어, 균일한 생산과 비용절감으로 미래를 선도하는 기업입니다.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 7. Contact Section -->
-            <section id="contact" class="py-32 bg-dark">
-                <div class="container mx-auto max-w-7xl px-6">
-                    <div class="grid lg:grid-cols-2 gap-20">
-                        <div class="reveal">
-                            <span class="section-sub">Get In Touch</span>
-                            <h3 class="section-title text-4xl md:text-6xl text-white mt-4 mb-10">문의 및 협력</h3>
-                            <p class="text-slate-400 text-xl mb-16 font-medium leading-relaxed">와이크로시스템즈와 함께 귀사의 생산 혁신을 시작하십시오. 모든 문의에 전문가가 상세히 답변해 드립니다.</p>
-                            
-                            <div class="space-y-10">
-                                <div class="flex items-start space-x-6 group">
-                                    <div class="bg-blue-600/10 p-4 rounded-xl group-hover:bg-blue-600 transition-colors">
-                                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Phone</p>
-                                        <p class="text-xl font-bold text-white">010-2767-1924</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-6 group">
-                                    <div class="bg-blue-600/10 p-4 rounded-xl group-hover:bg-blue-600 transition-colors">
-                                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Email</p>
-                                        <p class="text-xl font-bold text-white">universe78@naver.com</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-6 group">
-                                    <div class="bg-blue-600/10 p-4 rounded-xl group-hover:bg-blue-600 transition-colors">
-                                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Address</p>
-                                        <p class="text-xl font-bold text-white leading-snug">충남 천안시 동남구 풍세면 태학산로 175-1</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="reveal" style="transition-delay: 200ms;">
-                            <div class="bg-slate-900 border border-white/5 rounded-3xl p-6 md:p-10 shadow-2xl">
-                                <form action="https://formspree.io/f/xlgwrnrj" method="POST" class="space-y-6">
-                                    <div class="grid sm:grid-cols-2 gap-6">
-                                        <div class="space-y-2">
-                                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Name</label>
-                                            <input type="text" name="name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-blue-600 transition-all outline-none" placeholder="성함">
-                                        </div>
-                                        <div class="space-y-2">
-                                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Contact</label>
-                                            <input type="tel" name="phone" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-blue-600 transition-all outline-none" placeholder="연락처">
-                                        </div>
-                                    </div>
-                                    <div class="space-y-2">
-                                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Email</label>
-                                        <input type="email" name="email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-blue-600 transition-all outline-none" placeholder="example@wycro.com">
-                                    </div>
-                                    <div class="space-y-2">
-                                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Message</label>
-                                        <textarea name="message" required rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:ring-2 focus:ring-blue-600 transition-all outline-none resize-none" placeholder="문의 내용을 입력하세요."></textarea>
-                                    </div>
-                                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-xl transition-all shadow-xl shadow-blue-600/20 uppercase tracking-widest text-sm">
-                                        문의 보내기
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Map -->
-                    <div class="mt-32 reveal">
-                        <div class="map-box group border-4 border-slate-900">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.178783451559!2d127.10543717642636!3d36.72242137227091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ad1784992925b%3A0xe67f90f38d39a3f2!2z7Lap7LKt64Ko64mEIOyynOyViOyLnCDrj5nrgrjqtawg7ZKN7IS466m0IO2Dge2VmeyCsOuhnCAxNzUtMQ!5e0!3m2!1sko!2skr!4v1710000000000!5m2!1sko!2skr" 
-                                width="100%" 
-                                height="100%" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-dark border-t border-slate-900 py-24 text-center">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col items-center space-y-5 mb-12">
-                    <img src="logo.png" alt="Wycro Systems" class="h-9 opacity-50" onerror="this.style.display='none'">
-                    <span class="text-sm font-medium text-white/40 italic tracking-wider">Wired yielding connected, reliable, and optimized systems.</span>
-                </div>
-                <p class="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">Specializing in high-precision EV thermal management and custom automation equipment solutions for the global future mobility industry.</p>
-                <div class="mt-16 text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
-                    © 2024 Wycro Systems Co., Ltd. All Rights Reserved.
-                </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <div class="text-sm font-extrabold text-slate-800">주요 적용 분야</div>
+            <div class="mt-3 grid gap-2">
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700">
+                EV 배터리 칠러
+              </div>
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700">
+                EV 오일 칠러
+              </div>
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700">
+                열교환기 핵심 부품
+              </div>
             </div>
-        </footer>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section><!-- SERVICE -->
+<section id="service" class="bg-slate-50 py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-sm font-extrabold text-brand">BUSINESS</div>
+    <h2 class="mt-2 text-2xl md:text-4xl font-black">사업분야</h2>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div class="bg-white p-5 rounded-2xl shadow-soft border border-slate-200">
+        <h3 class="font-black">자동화설비 제작</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          고객 공정에 최적화된 맞춤 자동화 설비 설계·제작
+        </p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl shadow-soft border border-slate-200">
+        <h3 class="font-black">도장 자동화</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          EV 열관리 부품 표면처리 품질 균일화
+        </p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl shadow-soft border border-slate-200">
+        <h3 class="font-black">적층·조립</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          공정 모듈화 및 생산성 향상
+        </p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl shadow-soft border border-slate-200">
+        <h3 class="font-black">검사 자동화</h3>
+        <p class="mt-2 text-sm text-slate-600">
+          비전·센서 기반 품질 검사 시스템
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY (자동화설비 현장 + 한줄 설명) -->
+<section id="story" class="py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-sm font-extrabold text-brand">STORY</div>
+    <h2 class="mt-2 text-2xl md:text-4xl font-black">자동화설비 구축 현장</h2>
+    <p class="mt-3 text-slate-600">
+      고객 공정에 맞춰 설계된 자동화설비로 생산 효율과 품질 안정화를 동시에 실현합니다.
+    </p>
+
+    <div class="mt-8 grid lg:grid-cols-2 gap-6 items-center">
+      <div class="rounded-3xl overflow-hidden shadow-soft border border-slate-200">
+        <!-- ✅ 스토리 이미지도 automation_line.jpg -->
+        <img src="automation_line.jpg" alt="자동화설비 현장" class="w-full h-56 sm:h-64 md:h-72 object-cover">
+      </div>
+
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+        <div class="font-extrabold text-slate-900">핵심 포인트</div>
+        <ul class="mt-3 text-sm text-slate-600 list-disc pl-5 space-y-2">
+          <li>도장·적층·검사·조립 공정을 라인으로 통합</li>
+          <li>반복 작업 자동화로 인력 투입 최소화</li>
+          <li>품질 편차 감소 및 생산 조건 표준화</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT (STORY 아래, 이미지/레이아웃/모바일 최적화) -->
+<section id="parts" class="py-10 md:py-16 bg-slate-50">
+  <div class="mx-auto max-w-5xl px-4">
+    <div class="mb-7 md:mb-8">
+      <div class="text-sm font-extrabold text-brand">PRODUCT</div>
+      <h2 class="mt-2 text-xl md:text-3xl font-black tracking-tight">
+        EV 열관리 핵심 부품 생산
+      </h2>
+      <p class="mt-2 text-sm md:text-base text-slate-600 leading-relaxed">
+        자동화설비를 기반으로 배터리 칠러 및 오일 칠러 핵심 부품을 직접 생산합니다.
+      </p>
     </div>
 
-    <!-- Admin Panel -->
-    <div id="admin-view" class="fixed inset-0 z-[100] bg-slate-950 overflow-y-auto hidden">
-        <div class="container mx-auto px-6 py-12 max-w-5xl">
-            <div class="flex justify-between items-center mb-12">
-                <h2 class="text-4xl font-black text-white italic">CMS DASHBOARD</h2>
-                <button id="admin-close-btn" class="bg-slate-900 text-slate-400 px-6 py-3 rounded-full font-bold hover:bg-red-500 hover:text-white transition-all">Close</button>
-            </div>
-            
-            <div class="bg-slate-900 rounded-3xl border border-white/5 p-12 space-y-12">
-                <div id="cms-editor" class="grid gap-10 md:grid-cols-2"></div>
-                <div class="pt-10">
-                    <button id="cms-save-btn" class="w-full bg-blue-600 text-white py-6 rounded-2xl font-black text-xl hover:bg-blue-500 transition-all shadow-xl shadow-blue-500/20 uppercase tracking-widest">
-                        Save Changes
-                    </button>
-                </div>
-            </div>
+    <!-- 모바일 1열 / PC 2열 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <!-- Battery Chiller -->
+      <article class="bg-white rounded-2xl shadow-soft border border-slate-200 overflow-hidden">
+        <!-- ✅ 사진 작게 (모바일/PC 최적) -->
+
+     <img src="battery_chiller.jpg"
+     class="w-full max-h-56 object-contain bg-slate-50">
+
+        <div class="p-4 md:p-5">
+          <h3 class="text-base md:text-lg font-extrabold">Battery Chiller Part</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            겹겹이 쌓인 알루미늄 플레이트 구조로 오일과 냉각수가 판 사이를 흐르며 열을 교환하는 EV 열관리 핵심 부품입니다.
+          </p>
         </div>
+      </article>
+
+      <!-- Oil Chiller -->
+      <article class="bg-white rounded-2xl shadow-soft border border-slate-200 overflow-hidden">
+     
+  <img src="oil_chiller.jpg"
+      class="w-full max-h-56 object-contain bg-slate-50">
+
+        <div class="p-4 md:p-5">
+          <h3 class="text-base md:text-lg font-extrabold">Oil Chiller Part</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            오일 순환과 열 전달이 핵심인 구조로 엔진 또는 변속기 오일 온도를 안정적으로 유지하는 열관리 부품입니다.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION (연락처/이메일/근무시간 반영) -->
+<section id="location" class="py-14 md:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-sm font-extrabold text-brand">LOCATION</div>
+    <h2 class="mt-2 text-2xl md:text-4xl font-black">오시는 길</h2>
+
+    <div class="mt-8 grid lg:grid-cols-2 gap-6">
+      <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-soft bg-white">
+        <iframe
+          title="map"
+          class="w-full h-[320px] md:h-[380px]"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EB%8F%99%EB%82%A8%EA%B5%AC%20%ED%92%8D%EC%84%B8%EB%A9%B4%20%ED%83%9C%ED%95%99%EC%82%B0%EB%A1%9C%20175-1&output=embed">
+        </iframe>
+      </div>
+
+      <div class="rounded-3xl border border-slate-200 shadow-soft bg-white p-6">
+        <div class="font-extrabold text-lg">회사 정보</div>
+        <dl class="mt-5 grid gap-4 text-sm">
+          <div>
+            <dt class="text-slate-500 font-semibold">주소</dt>
+            <dd class="mt-1 font-bold text-slate-800">충남 천안시 동남구 풍세면 태학산로 175-1</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500 font-semibold">전화번호</dt>
+            <dd class="mt-1 font-bold text-slate-800">010-2767-1924</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500 font-semibold">이메일</dt>
+            <dd class="mt-1 font-bold text-slate-800">universe78@naver.com</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500 font-semibold">근무 시간</dt>
+            <dd class="mt-1 font-bold text-slate-800">08:30 ~ 17:30 (주말·공휴일 휴무)</dd>
+          </div>
+        </dl>
+
+        <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-5">
+          <div class="text-sm font-extrabold text-slate-800">방문 안내</div>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+            현장 방문 전 연락 주시면 출입 및 주차를 안내드립니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (FORMSPREE: 데이터 수집 유지) -->
+<section id="contact" class="py-14 md:py-20 bg-brand text-white">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
+    <div>
+      <div class="text-sm font-extrabold text-white/80">CONTACT</div>
+      <h2 class="mt-2 text-2xl md:text-4xl font-black">문의 / 상담</h2>
+      <p class="mt-4 text-white/80 leading-relaxed">
+        공정, 설비, 자동화 관련 문의사항을 남겨주시면 빠르게 검토 후 연락드리겠습니다.
+      </p>
     </div>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
+    <form
+      action="https://formspree.io/f/xlgwrnrj"
+      method="POST"
+      class="bg-white/10 p-6 rounded-3xl border border-white/15"
+    >
+      <input type="hidden" name="_subject" value="WYCRO SYSTEMS 홈페이지 문의">
+      <input type="text" name="_gotcha" class="hidden">
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      <div class="space-y-4">
+        <input name="name" required placeholder="성함 / 회사명"
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-white/60 outline-none focus:ring-2 focus:ring-white/40">
 
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('glass', 'py-3', 'shadow-2xl');
-                header.classList.remove('py-5', 'border-transparent');
-                header.classList.add('border-slate-800/50');
-            } else {
-                header.classList.remove('glass', 'py-3', 'shadow-2xl', 'border-slate-800/50');
-                header.classList.add('py-5', 'border-transparent');
-            }
-        });
+        <input name="email" type="email" required placeholder="이메일"
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-white/60 outline-none focus:ring-2 focus:ring-white/40">
 
-        // Mobile Menu Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('mobile-close-btn');
-        const menu = document.getElementById('mobile-menu');
+        <input name="phone" placeholder="연락처"
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-white/60 outline-none focus:ring-2 focus:ring-white/40">
 
-        menuBtn.addEventListener('click', () => menu.classList.remove('hidden'));
-        closeBtn.addEventListener('click', () => menu.classList.add('hidden'));
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => menu.classList.add('hidden'));
-        });
+        <textarea name="message" rows="4" required
+          placeholder="문의 내용"
+          class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder:text-white/60 outline-none focus:ring-2 focus:ring-white/40"></textarea>
 
-        // CMS Logic
-        const DEFAULT_CMS = {
-            hero_title: "맞춤형 자동화 설비\nEV 열관리 부품의 혁신",
-            hero_desc: "자동화 기술의 리더. 도장 모듈에서 자동 검사 시스템까지,\n주식회사 와이크로시스템즈가 미래 기술의 새로운 표준을 제안합니다.",
-            prod_desc_battery: "겹겹이 쌓인 알루미늄 플레이트 구조의 열교환기가 들어갑니다. 이 부품은 오일과 냉각수가 얇은 알루미늄 판 사이를 흐르며 서로의 열을 교환하는 EV 열관리의 핵심 장치입니다.",
-            prod_desc_oil: "차량의 엔진 오일 또는 변속기 오일 온도를 일정 범위로 유지 오일 온도가 과도하게 상승하면 윤활 성능 저하 및 부품 손상이 발생하므로, 냉각 기능이 필수 배터리 칠러와 달리 이 부품은 전기적 제어보다는 오일 순환과 열 전달이 핵심."
-        };
+        <button type="submit"
+          class="w-full bg-white text-slate-900 font-black py-3 rounded-xl hover:opacity-95">
+          문의 보내기
+        </button>
 
-        let cmsData = JSON.parse(localStorage.getItem('wycro_cms')) || DEFAULT_CMS;
+        <p class="text-xs text-white/60">
+          * 제출하면 Formspree로 전송되어 데이터가 수집됩니다.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
 
-        function updateUI() {
-            document.querySelectorAll('[data-cms]').forEach(el => {
-                const key = el.getAttribute('data-cms');
-                if (cmsData[key]) el.innerText = cmsData[key];
-            });
-        }
+<!-- FOOTER -->
+<footer class="bg-slate-950 text-white text-sm">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="text-white/70">
+      © WYCRO SYSTEMS Co., Ltd. All Rights Reserved.
+    </div>
+  </div>
+</footer>
 
-        function setupEditor() {
-            const editor = document.getElementById('cms-editor');
-            editor.innerHTML = '';
-            Object.keys(cmsData).forEach(key => {
-                const div = document.createElement('div');
-                div.className = 'flex flex-col space-y-3';
-                div.innerHTML = `
-                    <label class="font-bold text-[10px] text-slate-500 uppercase tracking-widest">${key.replace(/_/g, ' ')}</label>
-                    <textarea data-key="${key}" class="bg-slate-950 border border-slate-800 p-5 rounded-xl h-32 text-white outline-none focus:ring-1 focus:ring-blue-500 transition-all font-medium">${cmsData[key]}</textarea>
-                `;
-                editor.appendChild(div);
-            });
-        }
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+  btn?.addEventListener("click", () => menu.classList.toggle("hidden"));
 
-        window.addEventListener('hashchange', () => {
-            if (window.location.hash === '#admin') {
-                document.getElementById('admin-view').classList.remove('hidden');
-                setupEditor();
-            } else {
-                document.getElementById('admin-view').classList.add('hidden');
-            }
-        });
+  // Close menu on click
+  menu?.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => menu.classList.add("hidden"));
+  });
+</script>
 
-        window.addEventListener('load', () => {
-            updateUI();
-            if (window.location.hash === '#admin') {
-                document.getElementById('admin-view').classList.remove('hidden');
-                setupEditor();
-            }
-        });
-
-        document.getElementById('admin-close-btn').addEventListener('click', () => { window.location.hash = '#home'; });
-
-        document.getElementById('cms-save-btn').addEventListener('click', () => {
-            const textareas = document.querySelectorAll('#cms-editor textarea');
-            textareas.forEach(ta => cmsData[ta.getAttribute('data-key')] = ta.value);
-            localStorage.setItem('wycro_cms', JSON.stringify(cmsData));
-            updateUI();
-            alert('저장되었습니다.');
-            window.location.hash = '#home';
-        });
-
-        // Navigation smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#admin') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
