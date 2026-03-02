@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WYCRO SYSTEMS | 주식회사 와이크로시스템즈</title>
+  <meta name="description" content="산업 자동화설비 전문기업 WYCRO SYSTEMS. 자동화설비, 오일칠러, 배터리칠러." />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css">
+
+  <style>
+    :root{
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --soft:#f6f8fc;
+      --dark:#0b1220;
+      --max:1200px;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Pretendard', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color:var(--ink);
+      background:#fff;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+    .head{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
+    .brand img{height:34px;width:auto}
+    .brand b{font-weight:900}
+    nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    nav a{font-size:14px;font-weight:800;color:#111827;padding:8px 10px;border-radius:10px}
+    nav a:hover{background:#f3f4f6;text-decoration:none}
+
+    /* Buttons (keep black/white) */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:48px;padding:0 18px;border-radius:14px;
+      border:2px solid #000;background:#fff;color:#000;
+      font-weight:900;font-size:14px;cursor:pointer;
+    }
+    .btn:hover{background:#000;color:#fff}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height:520px;height:70vh;
+      display:flex;align-items:center;overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(90deg, rgba(11,18,32,.65), rgba(11,18,32,.35)),
+        url('hero_semiconductor_automation.png') center/cover no-repeat;
+      transform:scale(1.02);
+    }
+    .hero .wrap{position:relative;color:#fff}
+    .tag{
+      display:inline-block;
+      font-size:12px;letter-spacing:.28em;
+      font-weight:900;text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+    }
+    .hero h1{margin:10px 0 14px;font-size:52px;line-height:1.15;font-weight:900}
+    .hero p{margin:0 0 26px;max-width:760px;font-size:18px;line-height:1.75;color:rgba(255,255,255,.92)}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero .cta .btn{border-color:#fff;color:#fff;background:transparent}
+    .hero .cta .btn:hover{background:#fff;color:#000}
+
+    section{padding:110px 0}
+    h2{margin:0;font-size:36px;line-height:1.2;font-weight:900}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:32px}
+    .sub{margin:0;color:var(--muted);max-width:760px;line-height:1.75}
+
+    /* Greeting (Intek-like structure) */
+    .g-grid{display:grid;grid-template-columns:0.95fr 1.55fr;gap:80px;align-items:flex-start}
+    .g-left .tag2{
+      display:inline-block;font-size:12px;letter-spacing:.28em;font-weight:900;text-transform:uppercase;color:#111;
+    }
+    .g-left h2{font-size:40px;margin-top:14px}
+    .g-bar{width:56px;height:3px;background:#111;border-radius:999px;margin-top:22px}
+    .g-right{max-width:640px;margin-left:auto;font-size:16px;line-height:1.9;color:#374151}
+    .g-right p{margin:0 0 22px}
+    .signature{margin-top:36px;border-top:1px solid var(--line);padding-top:20px;color:#111827}
+    .signature strong{font-weight:900}
+
+    /* Products */
+    .products{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .card .p{padding:18px 18px 20px}
+    .card h3{margin:10px 0 6px;font-size:18px;font-weight:900}
+    .card p{margin:0;color:var(--muted);line-height:1.65}
+
+    /* Difference */
+    .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+    .diff-item{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff}
+    .diff-item b{display:block;font-weight:900;margin-bottom:10px}
+    .diff-item span{color:var(--muted);line-height:1.6;font-size:14px}
+
+    /* Map */
+    .map{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .map-box{height:420px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+
+    /* Contact (boxed/table look like you want) */
+    .contact{background:#fff}
+    .contact-card{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:#fff;
+      overflow:hidden;
+    }
+    .contact-inner{
+      display:grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap:0;
+    }
+    .contact-left{
+      padding:34px 34px;
+      border-right:1px solid var(--line);
+      background:#fff;
+    }
+    .contact-left .mini{font-size:12px;letter-spacing:.28em;font-weight:900;color:#111;text-transform:uppercase}
+    .contact-left h2{margin-top:10px;font-size:48px}
+    .contact-left p{margin:18px 0 30px;color:var(--muted);font-size:16px;line-height:1.9;max-width:520px}
+
+    .info-list{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+    .info-item{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:#fafafa}
+    .info-item .k{font-size:12px;letter-spacing:.22em;font-weight:900;color:#64748b}
+    .info-item .v{margin-top:6px;font-size:18px;font-weight:900;color:#0f172a}
+    .info-item .v.small{font-size:15px;font-weight:800}
+
+    .contact-right{padding:34px 34px;background:#fff}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:grid;gap:8px}
+    label{font-size:13px;font-weight:800;color:#334155}
+    .input{
+      height:52px;border:1px solid #dbe1ea;border-radius:14px;
+      padding:0 14px;font-size:15px;outline:none;
+    }
+    textarea.input{height:180px;padding:14px;resize:vertical}
+    .span-2{grid-column: span 2;}
+    .contact-actions{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+    .hint{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+    footer{background:var(--dark);color:#fff;padding:30px 0}
+    footer .f{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    footer small{color:rgba(255,255,255,.75)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      section{padding:80px 0}
+      .hero h1{font-size:38px}
+      .g-grid{grid-template-columns:1fr;gap:44px}
+      .g-left h2{font-size:30px}
+      .g-right{margin-left:0}
+      .cards{grid-template-columns:1fr}
+      .diff-grid{grid-template-columns:1fr 1fr}
+      .contact-inner{grid-template-columns:1fr}
+      .contact-left{border-right:none;border-bottom:1px solid var(--line)}
+      .contact-left h2{font-size:38px}
+      .form-grid{grid-template-columns:1fr}
+      .span-2{grid-column: span 1;}
+    }
+    @media (max-width: 540px){
+      .diff-grid{grid-template-columns:1fr}
+      .brand{min-width:auto}
+      .brand b{display:none}
+      .contact-left,.contact-right{padding:22px}
+      .contact-left h2{font-size:34px}
+    }
+  
+    /* --- Product card image normalization (User choice: A=cover, 4:3, clamp 2 lines) --- */
+    .product-media{
+      aspect-ratio: 4 / 3;
+      overflow:hidden;
+      background:#f3f4f6;
+    }
+    .product-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .card .p{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:18px 18px 20px;
+      min-height:140px;
+    }
+    .clamp-2{
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    /* --- Scroll reveal (works on mobile too) --- */
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition: opacity .75s ease, transform .75s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1; transform:none; transition:none;}
+    }
+
+  
+    /* --- Hero title Pulse (safe: does not hide sections) --- */
+    .hero-title{
+      animation: heroPulse 3.2s ease-in-out infinite;
+      will-change: opacity;
+    }
+    @keyframes heroPulse{
+      0%,100%{opacity:1}
+      50%{opacity:0.28}
+    }
+    .hero-title:hover{
+      animation: heroShake .55s ease-in-out 1;
+    }
+    @keyframes heroShake{
+      0%{transform:translateX(0)}
+      15%{transform:translateX(-3px) rotate(-0.4deg)}
+      30%{transform:translateX(3px) rotate(0.4deg)}
+      45%{transform:translateX(-2px) rotate(-0.2deg)}
+      60%{transform:translateX(2px) rotate(0.2deg)}
+      75%{transform:translateX(-1px)}
+      100%{transform:translateX(0)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero-title{animation:none}
+      .hero-title:hover{animation:none}
+    }
+
+  
+    /* --- Map section mobile layout fix --- */
+    @media (max-width: 860px){
+      #map .section-title{
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        gap:10px !important;
+      }
+      #map .section-title h2{
+        margin:0 !important;
+      }
+      #map .section-title p{
+        margin:0 !important;
+      }
+    }
+
+  
+    /* --- PROCESS (A안: 라이트 톤 통일) --- */
+    .process-light{
+      background: #f7f9fc;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 96px 0;
+    }
+    .process-title{
+      margin-bottom: 26px;
+    }
+    .process-hero{
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 26px 22px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+    .process-kicker{
+      color:#2563eb;
+      font-weight:900;
+      letter-spacing:.28em;
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .process-headline{
+      font-weight:900;
+      font-size:28px;
+      color:#0b1220;
+      margin-bottom:10px;
+    }
+    .process-sub{
+      color:#475569;
+      line-height:1.8;
+      font-size:15px;
+    }
+    .process-grid{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+    .process-card{
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align:center;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+    .process-icon{
+      width:64px;
+      height:64px;
+      border-radius:999px;
+      background:#eef2ff;
+      border:1px solid #dbeafe;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 12px;
+      font-size:28px;
+    }
+    .process-name{
+      font-weight:900;
+      color:#0b1220;
+      margin-bottom:6px;
+      font-size:15px;
+    }
+    .process-desc{
+      color:#64748b;
+      font-size:13px;
+      line-height:1.6;
+    }
+    .process-note{
+      margin-top: 14px;
+      color:#94a3b8;
+      font-size:12px;
+    }
+    @media (max-width: 1024px){
+      .process-grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 720px){
+      .process-light{ padding: 72px 0; }
+      .process-grid{ grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .process-headline{ font-size:24px; }
+    }
+
+  </style>
+
+  <noscript>
+    <style>
+      .reveal{opacity:1 !important; transform:none !important;}
+    </style>
+  </noscript>
+
+</head>
+
+<body>
+<header>
+  <div class="wrap head">
+    <a class="brand" href="#top" aria-label="WYCRO SYSTEMS">
+      <img src="logo.png" alt="WYCRO SYSTEMS 로고">
+      <b>주식회사 와이크로시스템즈</b>
+    </a>
+    <nav>
+      <a href="#greeting">인사말</a>
+      <a href="#products">제품소개</a>
+      <a href="#difference">차별성</a>
+      <a href="#process">공정</a>
+      <a href="#map">약도</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="wrap">
+      <div class="tag">WYCRO SYSTEMS</div>
+      <h1 class="hero-title">Automation Solutions for Industry</h1>
+      <p class="reveal">
+        WYCRO SYSTEMS는 산업 자동화설비를 중심으로 오일칠러·배터리칠러 부품을
+        자체 설계·제작한 자동화설비로 생산하는 전문기업입니다.
+      </p>
+      <div class="cta reveal">
+        <a class="btn" href="#products">제품소개 보기</a>
+        <a class="btn" href="#contact">프로젝트 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GREETING -->
+  <section id="greeting">
+    <div class="wrap g-grid">
+      <div class="g-left reveal">
+        <span class="tag2">CEO GREETING</span>
+        <h2>와이크로시스템즈<br>홈페이지 방문을<br>환영합니다</h2>
+        <div class="g-bar"></div>
+      </div>
+
+      <div class="g-right reveal">
+        <p>안녕하십니까.</p>
+        <p>주식회사 와이크로시스템즈(WYCRO SYSTEMS) 홈페이지를 방문해 주셔서 감사합니다.</p>
+        <p>
+          와이크로시스템즈는 고객맞춤형 자동화 설비 설계·제작과 전기차(EV) 배터리 칠러와
+          오일 칠러에 적용되는 열교환기 핵심 부품을 자동화 설비로 도장, 모듈화하여
+          검사하는 기술기업입니다.
+        </p>
+        <p>
+          이를 통해 고객사의 생산 효율을 높이고 인건비 부담을 획기적으로 줄일 수 있는
+          솔루션을 제공합니다.
+        </p>
+        <p>
+          또한, EV 열관리 산업의 발전과 함께 성장하며, 첨단 기술을 접목시켜
+          환경을 고려한 지속 가능한 자동화 솔루션을 개발하여 산업 전반의 혁신을
+          주도하겠습니다.
+        </p>
+        <div class="signature">
+          <strong>WYCRO SYSTEMS Co., Ltd.</strong><br>
+          주식회사 와이크로시스템즈
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
+    <div class="wrap">
+      <div class="section-title reveal">
+        <h2>제품소개</h2>
+        <p class="sub">자동화설비 중심의 공정 솔루션과 열관리 부품 생산 자동화를 제공합니다.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="product-media"><img src="automation_equipment.jpg" alt="자동화설비"></div>
+          <div class="p">
+            <h3>자동화설비</h3>
+            <p class="clamp-2">이송·적재·검사·조립 등 공정 자동화를 위한 맞춤형 설비를 설계·제작합니다.</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="product-media"><img src="oil_chiller.jpg" alt="오일칠러 부품"></div>
+          <div class="p">
+            <h3>오일칠러</h3>
+            <p class="clamp-2">산업 설비의 열 제어를 위한 오일칠러 적용 부품 및 공정 자동화를 지원합니다.</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="product-media"><img src="battery_chiller.jpg" alt="배터리칠러 부품"></div>
+          <div class="p">
+            <h3>배터리칠러</h3>
+            <p class="clamp-2">EV 열관리 시스템에 적용되는 배터리 칠러용 핵심 부품 생산 자동화를 제공합니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROCESS (EV Thermal Management) -->
+
+  <!-- PROCESS (EV Thermal Management) - Light (A안) -->
+  <section id="process" class="process-light">
+    <div class="wrap">
+      <div class="section-title process-title">
+        <h2>공정</h2>
+        <p>EV 열관리 부품의 자동 로드 → 도장 → 건조 → 적층 → 검사 → 출하까지, 완전 자동화 공정을 구현합니다.</p>
+      </div>
+
+      <div class="process-hero">
+        <div class="process-kicker">EV THERMAL MANAGEMENT</div>
+        <div class="process-headline">EV 열관리 자동화 공정</div>
+        <div class="process-sub">
+          배터리 칠러·오일 칠러에 적용되는 알루미늄 플레이트 핀 타입 열교환기 부품을 자동화 설비로 일관 생산합니다.
+        </div>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-icon">📦</div>
+          <div class="process-name">자동 로더</div>
+          <div class="process-desc">알루미늄 플레이트 자동 공급·정렬</div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">🎨</div>
+          <div class="process-name">자동 도포</div>
+          <div class="process-desc">접합용 용액 균일 자동 분사</div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">🔥</div>
+          <div class="process-name">건조 공정</div>
+          <div class="process-desc">고온 챔버 정밀 온도 제어 건조</div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">📐</div>
+          <div class="process-name">자동 적층</div>
+          <div class="process-desc">다층 플레이트 정밀 자동 적층</div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">🔍</div>
+          <div class="process-name">품질 검사</div>
+          <div class="process-desc">비전 검사 & 치수 자동 측정·분류</div>
+        </div>
+
+        <div class="process-card">
+          <div class="process-icon">📦</div>
+          <div class="process-name">자동 출하</div>
+          <div class="process-desc">합격품 자동 패킹 & 출하 대기</div>
+        </div>
+      </div>
+
+      <div class="process-note">*공정 아이콘/문구는 홈페이지용 시각화입니다.</div>
+    </div>
+  </section>
+
+<!-- DIFFERENCE -->
+  <section id="difference">
+    <div class="wrap">
+      <div class="section-title reveal">
+        <h2>WYCRO SYSTEMS의 차별성</h2>
+        <p class="sub">자체 설계·제작 역량과 자동화 기술을 바탕으로, 현장 중심의 경쟁력을 제공합니다.</p>
+      </div>
+
+      <div class="diff-grid">
+        <div class="diff-item reveal"><b>In-house Engineering</b><span>설계부터 제작·시운전까지 자체 수행</span></div>
+        <div class="diff-item reveal"><b>Quality Consistency</b><span>자동화 기반 균일한 품질 확보</span></div>
+        <div class="diff-item reveal"><b>Productivity</b><span>고속·대량 생산 대응 구조</span></div>
+        <div class="diff-item reveal"><b>Customization</b><span>공정 맞춤 확장 설계 가능</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map" class="map">
+    <div class="wrap">
+      <div class="section-title reveal">
+        <h2>오시는 길</h2>
+        <p class="sub">방문 전 연락 주시면 안내드리겠습니다.</p>
+      </div>
+      <div class="map-box reveal" aria-label="Google Map">
+        <iframe
+          src="https://www.google.com/maps?q=충남%20천안시%20동남구%20풍세면%20태학산로%20175-1&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-title reveal">
+        <h2>문의</h2>
+        <p class="sub">전화·이메일·주소를 클릭하면 바로 연결됩니다.</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <div class="contact-inner">
+          <!-- LEFT -->
+          <div class="contact-left">
+            <div class="mini">CONTACT</div>
+            <h2 style="margin:10px 0 0;">문의 및 협력</h2>
+            <p>와이크로시스템즈와 함께 귀사의 생산 혁신을 시작하십시오. 모든 문의에 상세히 답변 드립니다.</p>
+
+            <ul class="info-list">
+              <li class="info-item">
+                <div class="k">PHONE</div>
+                <div class="v"><a href="tel:01027671924">010-2767-1924</a></div>
+              </li>
+              <li class="info-item">
+                <div class="k">EMAIL</div>
+                <div class="v"><a href="mailto:universe78@naver.com">universe78@naver.com</a></div>
+              </li>
+              <li class="info-item">
+                <div class="k">ADDRESS</div>
+                <div class="v small"><a href="#map">충남 천안시 동남구 풍세면 태학산로 175-1</a></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="contact-right">
+            <form action="https://formspree.io/f/xlgwrnrj" method="POST">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">이름</label>
+                  <input class="input" id="name" name="name" type="text" placeholder="홍길동" required>
+                </div>
+                <div class="field">
+                  <label for="phone">연락처(선택)</label>
+                  <input class="input" id="phone" name="phone" type="text" placeholder="010-0000-0000">
+                </div>
+                <div class="field span-2">
+                  <label for="email">이메일</label>
+                  <input class="input" id="email" name="email" type="email" placeholder="example@wycro.com" required>
+                </div>
+                <div class="field span-2">
+                  <label for="company">회사명(선택)</label>
+                  <input class="input" id="company" name="company" type="text" placeholder="회사명을 입력하세요">
+                </div>
+                <div class="field span-2">
+                  <label for="message">문의 내용</label>
+                  <textarea class="input" id="message" name="message" placeholder="문의 내용을 입력하세요." required></textarea>
+                </div>
+              </div>
+
+              <!-- spam honeypot -->
+              <input type="text" name="_gotcha" style="display:none">
+
+              <div class="contact-actions">
+                <button class="btn" type="submit">문의 보내기</button>
+                <p class="hint">* 본 문의는 Formspree를 통해 접수됩니다. (서버 없이 사용 가능)</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap f">
+    <div>
+      <strong>WYCRO SYSTEMS</strong><br>
+      <small>주식회사 와이크로시스템즈</small>
+    </div>
+    <div>
+      <small>© WYCRO SYSTEMS. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal (IntersectionObserver)
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) || els.length === 0){
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target); // show once
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
